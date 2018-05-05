@@ -92,8 +92,8 @@ void on_TrackBar(int,void*)
 
 void function5_4()
 {
-	g_Img = imread("c://2.png");
-	namedWindow(WINDOW_NAME, WINDOW_AUTOSIZE);
+	g_Img = imread("c://3.png");
+	namedWindow(WINDOW_NAME, WINDOW_NORMAL);
 	char contrastTrackBar[50],brightTrackBar[50];
 	sprintf(contrastTrackBar, "valueC");
 	sprintf(brightTrackBar, "valueB");
@@ -105,3 +105,32 @@ void function5_4()
 }
 
 //=========================================================================
+
+void saveFile()
+{
+    FileStorage fs("file.yaml", FileStorage::WRITE);
+    fs << "Integer" << 23456;
+    fs << "String" << 3.1415926;
+    Mat img = imread("c:\\1.png");
+    fs << "Mat" << img;
+    fs.release()
+}
+
+void loadFile()
+{
+    FileStorage fs;
+    fs.open("file.yaml", FileStorage::READ);
+    int t1=fs["Integer"];
+    float t2 = fs["String"];
+    cout << t1 << endl << t2 << endl;
+    Mat img;
+    fs["Mat"]>>img;
+    imshow("test",img);
+    fs.release();
+}
+
+void function5_6()
+{
+    saveFile();
+    loadFile();
+}
