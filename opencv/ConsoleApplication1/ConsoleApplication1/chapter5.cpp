@@ -113,7 +113,7 @@ void saveFile()
     fs << "String" << 3.1415926;
     Mat img = imread("c:\\1.png");
     fs << "Mat" << img;
-    fs.release()
+	fs.release();
 }
 
 void loadFile()
