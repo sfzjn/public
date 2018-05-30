@@ -45,7 +45,40 @@ void function6_1_11()
 	on_GaussianBlur(gaussianValue, 0);
 }
 
-void function6_2_5()
+//===========================================================
+void on_MedianBlur(int value, void*)
 {
+    if (value > 0)
+    {
+        Mat img;
+        medianBlur(g_img, img, value*2+1);
+        imshow("中值滤波", img);
+    }
+}
 
+void on_BilateralBlur(int value, void*)
+{
+    if (value > 0)
+    {
+        Mat img;
+        bilateralFilter(g_img, img, value, value * 2, value / 2);
+        imshow("双边滤波", img);
+    }
+}
+
+void function6_2_4()
+{
+    int medianValue = 3, bilateralValue=3;
+    Mat img = imread("c:\\baboon.jpg");
+    g_img = img.clone();
+    imshow("原图", img);
+
+    namedWindow("中值滤波", WINDOW_AUTOSIZE);
+    createTrackbar("参数", "中值滤波", &medianValue, 20, on_MedianBlur);
+    on_MedianBlur(medianValue, 0);
+
+    /*namedWindow("双边滤波");
+    createTrackbar("参数", "双边滤波", &bilateralValue, 20, on_BilateralBlur);
+    on_BilateralBlur(bilateralValue, 0);*/
+    
 }

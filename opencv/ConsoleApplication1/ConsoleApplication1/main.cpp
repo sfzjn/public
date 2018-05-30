@@ -15,7 +15,7 @@ int main()
 	//function3_1_9();
 	//function3_2_1();
 	//function3_3();
-	function6_1_11();
+	function6_2_4();
 	waitKey(0);
     system("pause");
 }
