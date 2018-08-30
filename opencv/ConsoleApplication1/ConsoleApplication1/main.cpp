@@ -1,4 +1,5 @@
 #include "test.h"
+#include "chapter1.h"
 #include "chapter3.h"
 #include "chapter4.h"
 #include "chapter5.h"
@@ -15,7 +16,7 @@ int main()
 	//function3_1_9();
 	//function3_2_1();
 	//function3_3();
-	function6_2_4();
+	function1_6_1();
 	waitKey(0);
     system("pause");
 }
